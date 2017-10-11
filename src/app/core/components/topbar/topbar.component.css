@@ -1,0 +1,10 @@
+#logo{
+  width: 200px;
+  height: 55px;
+  justify-content: center;
+}
+
+#logo-text{
+  padding-left: 5px;
+  font-family: "Times New Roman", Georgia, Serif;
+}

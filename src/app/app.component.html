@@ -1,6 +1,6 @@
 <app-topbar></app-topbar>
-<app-navbar></app-navbar>
+<app-navbar *ngIf="showNav$ | async"></app-navbar>
 
-<div id="content">
+<div id="content" [style.left]="(showNav$ | async) ? '200px':'0px'">
   <router-outlet></router-outlet>
 </div>

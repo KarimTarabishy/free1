@@ -1,19 +1,22 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {Store} from "@ngrx/store";
-import * from "./routing/index";
+import * as fromRoot from "./reducers/index";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   showNav$: Observable<Boolean>;
-
-  constructor(private store: Store<State>) {
-    this.showNav$ = this.store.select(from)
+  constructor(private store: Store<fromRoot.State>) {
+    this.showNav$ = this.store.select(fromRoot.getShowNavBar);
   }
+
+  ngOnInit(): void {
+  }
+
+
 
 }

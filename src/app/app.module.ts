@@ -5,8 +5,10 @@ import { AppComponent } from './app.component';
 import {CoreModule} from "./core/core.module";
 import {AppRoutingModule} from "./app-routing.module";
 import {StoreModule} from "@ngrx/store";
-import {reducers} from "./routing";
+import {reducers} from "./reducers";
 import {Observable} from "rxjs/Observable";
+import {environment} from "../environments/environment";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import {Observable} from "rxjs/Observable";
     BrowserModule,
     CoreModule,
     StoreModule.forRoot(reducers),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
     AppRoutingModule
   ],
   providers: [],

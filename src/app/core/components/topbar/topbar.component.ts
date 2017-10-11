@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-topbar',
@@ -7,7 +7,7 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TopbarComponent implements OnInit {
-
+  @HostBinding("attr.class") HOST_CLASS = "ui top fixed borderless menu";
   constructor() { }
 
   ngOnInit() {
