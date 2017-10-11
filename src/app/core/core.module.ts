@@ -5,12 +5,14 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {StartComponent} from "./components/start/start.component";
+import {CookieService} from "ngx-cookie-service";
 
 @NgModule({
   imports: [
     CommonModule,
   ],
   declarations: [PagenotfoundComponent, TopbarComponent, NavbarComponent, StartComponent],
-  exports: [PagenotfoundComponent, TopbarComponent, NavbarComponent, StartComponent]
+  exports: [PagenotfoundComponent, TopbarComponent, NavbarComponent, StartComponent],
+  providers: [CookieService]
 })
 export class CoreModule { }
