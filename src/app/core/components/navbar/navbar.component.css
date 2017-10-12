@@ -1,8 +1,13 @@
-a.link.item{
+a.title.link.item{
   color: white;
 }
 
 a.link.item:hover{
+  background-color: rgba(255,255,255,.08) !important;
+  color: white !important;
+}
+
+a.title.link.item.active{
   background-color: rgba(255,255,255,.08) !important;
   color: white !important;
 }

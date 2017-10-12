@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, HostBinding, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, OnDestroy, OnInit} from '@angular/core';
 import * as fromRoot from '../../../reducers';
 import {Store} from "@ngrx/store";
 import * as layout from '../../actions/layout';
@@ -9,10 +9,12 @@ import * as layout from '../../actions/layout';
   styleUrls: ['./pagenotfound.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PagenotfoundComponent {
-  @HostBinding("attr.class") HOST_CLASSES = "ui grid full height middle aligned";
-  constructor(private store: Store<fromRoot.State>) {
-    this.store.dispatch(new layout.HideSideNav());
+export class PagenotfoundComponent implements OnDestroy {
+  @HostBinding("attr.class") HOST_CLASSES = "ui grid full height middle aligned center aligned";
+  constructor() {
+  }
+
+  ngOnDestroy() {
   }
 
 }

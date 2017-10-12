@@ -7,7 +7,7 @@ import {Store} from "@ngrx/store";
   selector: 'app-start',
   template: `<span>Great</span>`
 })
-export class StartComponent implements OnInit {
+export class StartPageComponent implements OnInit {
 
   constructor(private store: Store<fromRoot.State>) {
     this.store.dispatch(new layout.ShowSideNav());

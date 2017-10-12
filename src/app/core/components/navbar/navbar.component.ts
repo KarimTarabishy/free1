@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input, OnInit} from '@angular/core';
 import {DomSanitizer} from "@angular/platform-browser";
+import {NavigationContent} from "../../models/navigation-content";
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,7 @@ import {DomSanitizer} from "@angular/platform-browser";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent implements OnInit {
-  @Input() content: {[key: string]: string};
+  @Input() content: Array<NavigationContent>;
   @HostBinding("attr.class") HOST_CLASS = "ui left fixed vertical borderless menu";
   @HostBinding("attr.style") host_style;
   constructor(private sanitizer: DomSanitizer) {

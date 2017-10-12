@@ -9,6 +9,7 @@ import {reducers} from "./reducers";
 import {Observable} from "rxjs/Observable";
 import {environment} from "../environments/environment";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {AdminLoadGuard} from "./core/guards/admin.loadguard";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AdminLoadGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

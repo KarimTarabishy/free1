@@ -1,4 +1,5 @@
 import {Action} from "@ngrx/store";
+import {NavigationContent} from "../models/navigation-content";
 
 
 export const SHOW_SIDE_NAV = "[core_layout] Show sideNav";
@@ -16,7 +17,7 @@ export class HideSideNav implements Action {
 
 export class SetSideNavContent implements Action {
   readonly type = SET_SIDE_NAV_CONTENT;
-  constructor(public payload: {[key: string]: string}) {}
+  constructor(public payload: Array<NavigationContent>) {}
 }
 
 export type Actions = ShowSideNav | HideSideNav | SetSideNavContent;

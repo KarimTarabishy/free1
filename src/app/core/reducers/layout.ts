@@ -1,14 +1,15 @@
 import * as layout from "../actions/layout";
+import {NavigationContent} from "../models/navigation-content";
 
 
 export interface State {
   showNavBar: boolean;
-  navBarContent: {[key: string]: string};
+  navBarContent: Array<NavigationContent>;
 }
 
 const initialState: State = {
   showNavBar: false,
-  navBarContent: {}
+  navBarContent: []
 };
 
 
@@ -35,4 +36,4 @@ export function reducer(state: State = initialState, action: layout.Actions): St
 }
 
 export const getShowNavBar = (state: State): boolean => state.showNavBar;
-export const getNavBarContent = (state: State): {[key: string]: string} => state.navBarContent;
+export const getNavBarContent = (state: State): Array<NavigationContent>  => state.navBarContent;

@@ -1,3 +1,5 @@
-<a class="item link">Features</a>
-<a class="item link">Testimonials</a>
-<a class="item link">Sign-in</a>
+<a class="title link item" *ngFor="let item of content"
+        [routerLink]="item.url" routerLinkActive="active">
+  <i [class]= "item.icon + ' icon titleIcon'"></i>
+  {{item.name}}
+</a>
