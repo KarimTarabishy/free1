@@ -2,8 +2,13 @@
   <img src="./assets/images/logo.png">
   <span id="logo-text"> The App </span>
 </div>
-<div class="right menu">
-  <a class="item">Features</a>
-  <a class="item">Testimonials</a>
-  <a class="item">Sign-in</a>
+<div class="right menu" *ngIf="!!this.user">
+  <a class="item" [routerLink]="content && content.user_setting_url">
+    <img id="user-image" class="ui mini circular image"
+         [src]="this.user.image_file || '/assets/images/user.png'">
+      {{this.user.name}}
+    </a>
+  <a (click)="onLogoutClicked()" class="item" title="sign-out">
+    <i class="sign out large icon"></i>
+  </a>
 </div>

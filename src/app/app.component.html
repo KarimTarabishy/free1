@@ -1,4 +1,6 @@
-<app-topbar></app-topbar>
+<app-topbar [user]="user$ | async"
+            [content]="topBarContent$ | async"
+            (logout)="logout()"></app-topbar>
 <app-navbar *ngIf="showNav$ | async" [content]="navBarContent$ | async"></app-navbar>
 
 <div id="content" [style.left]="(showNav$ | async) ? '200px':'0px'">

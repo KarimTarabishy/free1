@@ -15,9 +15,8 @@ export class AdminActivateGuard implements CanActivate, CanActivateChild {
     return this.authService.silentLogin("admin")
       .do(success => {
         if (!success) {
-          this.router.navigate(["/login", {queryParams: {back: state.url}}]);
+          this.router.navigate(["/login", "admin"], {queryParams: {back: state.url}});
         }
-        console.log("here");
       });
   }
 

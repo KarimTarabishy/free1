@@ -23,6 +23,7 @@ export const reducers: ActionReducerMap<State> = {
 export const getLayoutState = createFeatureSelector<fromLayout.State>("layout");
 export const getShowNavBar = createSelector( getLayoutState, fromLayout.getShowNavBar);
 export const getNavBarContent = createSelector( getLayoutState, fromLayout.getNavBarContent);
+export const getTopBarContent = createSelector(getLayoutState, fromLayout.getTopBarContent);
 
 export const getAuthState = createFeatureSelector<fromAuth.State>("auth");
 export const getCurrentUser = createSelector(getAuthState, fromAuth.getCurrentUser);

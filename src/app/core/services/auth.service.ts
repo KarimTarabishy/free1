@@ -4,8 +4,11 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/defaultIfEmpty';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/materialize';
+import 'rxjs/add/operator/dematerialize';
 import 'rxjs/add/operator/merge';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/filter';
@@ -16,6 +19,8 @@ import {CookieService} from "ngx-cookie-service";
 import {Store} from "@ngrx/store";
 import * as fromRoot from "../../reducers";
 import * as auth from "../actions/auth";
+import {observable} from "rxjs/symbol/observable";
+import {materialize} from "rxjs/operator/materialize";
 
 
 @Injectable()
@@ -55,10 +60,16 @@ export class AuthService {
 
   getUserByPass(name: String, password: String, type: string): Observable<User> {
     if (name === "admin" && password === "admin") {
-      return Observable.of<User>(new User("Admin", "admin"))
+      return Observable.of<User>(new User("Admin", "admin")).delay(1000)
         .map<User, User>(user => user.type === type ? user : null);
     }
-    return Observable.throw("Invalid user credentials");
+    if (name === "error") {
+      return Observable.throw("Couldn't reach server.")
+        .materialize().delay(1000).dematerialize();
+    }
+    return Observable.of<User>(null).delay(1000);
+
+
   }
 
   getUserByToken(type: string): Observable<User> {
@@ -67,5 +78,10 @@ export class AuthService {
         .map<User, User>(user => user.type === type ? user : null);
     }
     return Observable.of(null);
+  }
+
+  logout() {
+    this.cookies.delete("token");
+    this.store.dispatch(new auth.SetUser(null));
   }
 }

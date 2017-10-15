@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {PagenotfoundComponent} from "./core/containers/pagenotfound/pagenotfound.component";
 import {StartPageComponent} from "./core/containers/startpage/startpage.component";
 import {LoginPageComponent} from "./core/containers/loginpage/loginpage.component";
+import {AdminLoadGuard} from "./core/guards/admin.loadguard";
 
 const routes: Routes = [
   {path: "", redirectTo: "home", pathMatch: "full"},
@@ -10,7 +11,7 @@ const routes: Routes = [
 
   {path: "login", redirectTo: 'login/user', pathMatch: "full"},
   {path: "login/:type", component: LoginPageComponent},
-  {path: "admin", loadChildren: "app/admin/admin.module#AdminModule"},
+  {path: "admin", loadChildren: "app/admin/admin.module#AdminModule", canLoad: [AdminLoadGuard]},
   {path: "**", component: PagenotfoundComponent}
 ];
 

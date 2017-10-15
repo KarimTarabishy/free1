@@ -11,7 +11,7 @@ export class AdminLoadGuard implements CanLoad {
     return this.authService.silentLogin("admin")
       .do(success => {
         if (!success) {
-          this.router.navigate(["/login", {queryParams: {back: route.path}}]);
+          this.router.navigate(["/login", "admin"], {queryParams: {back: route.path}});
         }
       });
   }

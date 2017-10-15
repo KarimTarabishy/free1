@@ -19,6 +19,9 @@ export class AdminComponent implements OnInit {
   constructor(private store: Store<fromRoot.State>) {
     this.store.dispatch(new layout.ShowSideNav());
     this.store.dispatch(new layout.SetSideNavContent(this.NAVIGATION_CONTENT));
+    this.store.dispatch(new layout.SetTopBarContent(
+      new TopBarContent("/admin/user_setting")
+    ));
   }
 
   ngOnInit() {

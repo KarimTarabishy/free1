@@ -1,6 +1,5 @@
 #logo{
   width: 200px;
-  height: 55px;
   justify-content: center;
 }
 
@@ -8,3 +7,14 @@
   padding-left: 5px;
   font-family: "Times New Roman", Georgia, Serif;
 }
+
+
+#user-image {
+  margin-right: 10px;
+}
+
+
+.right.menu .item:hover {
+  background-color: #dfdfdf;
+}
+

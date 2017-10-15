@@ -11,6 +11,7 @@ export class StartPageComponent implements OnInit {
 
   constructor(private store: Store<fromRoot.State>) {
     this.store.dispatch(new layout.ShowSideNav());
+    this.store.dispatch(new layout.SetSideNavContent(null));
   }
 
   ngOnInit(): void {

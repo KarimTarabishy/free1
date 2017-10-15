@@ -1,0 +1,11 @@
+button.large.submit{
+  background-color: #639fff;
+  color: white !important;
+}
+.column{
+  max-width:500px;
+}
+
+.ui.form .ui.message.error{
+  display: block;
+}

@@ -5,6 +5,7 @@ import {NavigationContent} from "../models/navigation-content";
 export const SHOW_SIDE_NAV = "[core_layout] Show sideNav";
 export const HIDE_SIDE_NAV = "[core_layout] Hide sideNav";
 export const SET_SIDE_NAV_CONTENT = "[core_layout] Set sideNavContent";
+export const SET_TOP_BAR_CONTENT = "[core_layout] Set topBarContent";
 
 
 export class ShowSideNav implements Action {
@@ -20,4 +21,12 @@ export class SetSideNavContent implements Action {
   constructor(public payload: Array<NavigationContent>) {}
 }
 
-export type Actions = ShowSideNav | HideSideNav | SetSideNavContent;
+export class SetTopBarContent implements Action {
+  readonly type = SET_TOP_BAR_CONTENT;
+  constructor(public payload: TopBarContent) {}
+}
+
+export type Actions = ShowSideNav | HideSideNav | SetSideNavContent | SetTopBarContent;
+
+
+

@@ -14,9 +14,9 @@ export class NavbarComponent implements OnInit {
   @HostBinding("attr.style") host_style;
   constructor(private sanitizer: DomSanitizer) {
     this.host_style = this.sanitizer.bypassSecurityTrustStyle(`
-      top: 56px;
+      top: 65px;
       width: 200px;
-      background-color: #767676;
+      background-color: #639fff;
     `);
 
   }

@@ -1,4 +1,9 @@
-import {ChangeDetectionStrategy, Component, HostBinding, OnInit} from '@angular/core';
+import {
+  ChangeDetectionStrategy, Component, HostBinding,
+  OnInit, Output, EventEmitter, Input
+} from '@angular/core';
+import {DomSanitizer} from "@angular/platform-browser";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-topbar',
@@ -8,8 +13,19 @@ import {ChangeDetectionStrategy, Component, HostBinding, OnInit} from '@angular/
 })
 export class TopbarComponent implements OnInit {
   @HostBinding("attr.class") HOST_CLASS = "ui top fixed borderless menu";
-  constructor() { }
+  @HostBinding("attr.style") host_style;
+  @Output() logout: EventEmitter<any> = new EventEmitter();
+  @Input() user: User;
+  @Input() content: TopBarContent;
+  constructor(private sanitizer: DomSanitizer) {
+    this.host_style = this.sanitizer.bypassSecurityTrustStyle(`
+      height: 65px;
+    `);
+  }
 
+  onLogoutClicked() {
+    this.logout.emit(null);
+  }
   ngOnInit() {
   }
 

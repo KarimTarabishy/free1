@@ -4,12 +4,14 @@ import {NavigationContent} from "../models/navigation-content";
 
 export interface State {
   showNavBar: boolean;
-  navBarContent: Array<NavigationContent>;
+  navBarContent: Array<NavigationContent>,
+  topBarContent: TopBarContent;
 }
 
 const initialState: State = {
   showNavBar: false,
-  navBarContent: []
+  navBarContent: [],
+  topBarContent: null
 };
 
 
@@ -30,6 +32,11 @@ export function reducer(state: State = initialState, action: layout.Actions): St
         ...state,
         navBarContent: action.payload
       };
+    case layout.SET_TOP_BAR_CONTENT:
+      return {
+        ...state,
+        topBarContent: action.payload
+      };
     default:
       return state;
   }
@@ -37,3 +44,4 @@ export function reducer(state: State = initialState, action: layout.Actions): St
 
 export const getShowNavBar = (state: State): boolean => state.showNavBar;
 export const getNavBarContent = (state: State): Array<NavigationContent>  => state.navBarContent;
+export const getTopBarContent = (state: State): TopBarContent => state.topBarContent;

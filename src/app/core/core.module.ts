@@ -10,14 +10,18 @@ import {AuthService} from "./services/auth.service";
 import {AdminLoadGuard} from "./guards/admin.loadguard";
 import { LoginPageComponent } from './containers/loginpage/loginpage.component';
 import {RouterModule} from "@angular/router";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
-  declarations: [PagenotfoundComponent, TopbarComponent, NavbarComponent, StartPageComponent, LoginPageComponent],
-  exports: [PagenotfoundComponent, TopbarComponent, NavbarComponent, StartPageComponent, LoginPageComponent],
+  declarations: [PagenotfoundComponent, TopbarComponent, NavbarComponent,
+    StartPageComponent, LoginPageComponent],
+  exports: [PagenotfoundComponent, TopbarComponent, NavbarComponent,
+    StartPageComponent, LoginPageComponent],
   providers: [CookieService, AuthService, AdminLoadGuard]
 })
 export class CoreModule { }

@@ -1,7 +1,32 @@
 <div class="column ">
-  <h2 class="ui image header">
-    <img src="./assets/images/logo.png">
-    <div class="content">{{this.}}</div>
+  <h2 class="ui header">
+    {{this.type$ | async}} Authentication
   </h2>
-  <img class="centered image" src="./assets/images/notfound.PNG">
+  <form class="ui large form" (ngSubmit)="onSubmit(user.value, password.value, password)"
+        [class.loading]="loading"
+        #loginForm="ngForm" >
+    <div class="ui segment raised">
+      <div class="ui message error left aligned" *ngIf="!!this.error">
+        <p>{{this.error}}</p>
+      </div>
+
+      <div class="field">
+        <div class="ui left icon input">
+          <i class="user icon"></i>
+          <input type="text" name="name" placeholder="User Name"
+                 ngModel #user="ngModel" required>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui left icon input">
+          <i class="lock icon"></i>
+          <input type="password" name="password" placeholder="Password"
+                 ngModel #password="ngModel" required="">
+        </div>
+      </div>
+      <button type="submit" class="ui fluid large submit button"
+              [disabled]="loginForm.invalid">Login</button>
+
+    </div>
+  </form>
 </div>
